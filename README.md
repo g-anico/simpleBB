@@ -1,7 +1,7 @@
-# simplebb
+# simpleBB
 
 
-> A simple, light, old-school message board written in node.js.
+> A simple, light, old-school message board written in node.js, following the KISS(Keep It Simple, Stupid) philosophy.
 
 ## Table of Contents
 
