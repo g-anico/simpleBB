@@ -24,7 +24,9 @@
 ## Maintainers
 
 [@namho-kim](https://github.com/namho-kim)
+
 [@g-anico](https://github.com/g-anico)
+
 [@ramonahenry](https://github.com/ramonahenry)
 
 ## Contribute
