@@ -23,11 +23,11 @@
 
 ## Maintainers
 
-[@namho-kim](https://github.com/namho-kim)
+Namho Kim - [@namho-kim](https://github.com/namho-kim)
 
-[@g-anico](https://github.com/g-anico)
+Anco Chien - [@g-anico](https://github.com/g-anico)
 
-[@ramonahenry](https://github.com/ramonahenry)
+Ramona Henry - [@ramonahenry](https://github.com/ramonahenry)
 
 ## Contribute
 
