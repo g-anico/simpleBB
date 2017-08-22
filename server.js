@@ -20,6 +20,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+// Static Files
+app.use("/public", express.static(__dirname + "/public"));
+
 // Handlebars
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
