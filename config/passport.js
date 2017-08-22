@@ -39,20 +39,26 @@ passport.use("local-signup", new LocalStrategy(
 ));
 
 // Passport strategy for logins
-passport.use("local-signin", new LocalStrategy(
-    function(username, password, done) {
+passport.use("local-login", new LocalStrategy(
+    {passReqToCallback: true},
+    function(req, username, password, done) {
         db.User.findOne({
             where: {
                 username: username
             }
         }).then(function(dbUser) {
+            console.log("db?")
             if(!dbUser) {
-                return done(null, false, req.flash("loginMessage", "Incorrect username or password."));
+                console.log('wrong user')
+                return done(null, false, req.flash("loginError", "Incorrect username or password."));
             } else if(!dbUser.validPassword(password)) {
-                return done(null, false, req.flash("loginMessage", "Incorrect username or password."));
+                console.log('wrong pass')
+                return done(null, false, req.flash("loginError", "Incorrect username or password."));
             }
 
             return done(null, dbUser);
+        }).catch(function(err) {
+            console.log(err)
         });
     }
 ));

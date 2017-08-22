@@ -1,7 +1,7 @@
 
 module.exports = app => {
     app.get("/", (req, res) => {
-        res.send("hell0")
+        res.send(req.user)
     });
 
 

@@ -1,9 +1,9 @@
 const passport = require("../config/passport");
 
 module.exports = app => {
-    app.post("/login", passport.authenticate("local-signin", {
-        failureRedirect: "/login",
-        successRedirect: "/",
+    app.post("/login", passport.authenticate("local-login", {
+        failureRedirect: "/failed",
+        successRedirect: "back",
         failureFlash: true
     }));
 
@@ -16,18 +16,6 @@ module.exports = app => {
     app.get("/logout", (req, res) => {
         req.logout();
         res.redirect("/");
-    });
-
-    app.get("/user_data", (req, res) => {
-        if(!req.user) {
-            res.json({});
-        }
-
-        res.json({
-            username: req.user.username,
-            userType: req.user.userType,
-            status: req.user.status
-        });
     });
 
     app.get("/signup", (req, res) => {
