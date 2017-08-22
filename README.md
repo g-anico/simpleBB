@@ -37,4 +37,4 @@ Small note: If editing the README, please conform to the [standard-readme](https
 
 ## License
 
-none © 2017 Namho Kim
+MIT © 2017 Namho Kim

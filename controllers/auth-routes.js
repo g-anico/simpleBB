@@ -2,7 +2,7 @@ const passport = require("../config/passport");
 
 module.exports = app => {
     app.post("/login", passport.authenticate("local-login", {
-        failureRedirect: "/failed",
+        failureRedirect: "/login",
         successRedirect: "back",
         failureFlash: true
     }));
