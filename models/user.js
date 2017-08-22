@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         status: {
             type: DataTypes.STRING,
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     User.associate = models => {
-        User.hasMany(models.Forum, {});
+        User.hasMany(models.Topic, {});
     }
 
     User.prototype.validPassword = function(password) {

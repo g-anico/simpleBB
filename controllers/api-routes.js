@@ -1,13 +1,17 @@
 module.exports = app => {
-    app.get("/user_data", (req, res) => {
-        if(!req.user) {
-            res.json({});
-        }
+// Create new topic
+    app.post("", (req, res) => {
 
-        res.json({
-            username: req.user.username,
-            userType: req.user.userType,
-            status: req.user.status
-        });
     });
+
+// Write new post
+    app.post("", (req, res) => {
+
+    });
+
+// Edit post
+    app.put("", (req, res) => {
+
+    });
+
 }
