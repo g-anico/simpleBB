@@ -12,7 +12,7 @@ const express = require("express"),
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Passport & Sessions
 app.use(session({ secret: "lolcat", resave: true, saveUninitialized: true }));
@@ -29,10 +29,10 @@ app.set("view engine", "handlebars");
 
 // Routes
 require("./controllers/html-routes.js")(app)
-require("./controllers/api-routes.js")(app)
+require("./controllers/auth-routes.js")(app)
 
 // Start DB, Start Express Server
-db.sequelize.sync().then(() => {
+db.sequelize.sync({force: true}).then(() => {
     app.listen(PORT, () => {
         console.log("We're on at " + PORT);
     });

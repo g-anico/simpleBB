@@ -30,6 +30,14 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
+    User.associate = models => {
+        User.hasMany(models.Post, {});
+    }
+
+    User.associate = models => {
+        User.hasMany(models.Forum, {});
+    }
+
     User.prototype.validPassword = function(password) {
         return bcrypt.compareSync(password, this.password);
     };

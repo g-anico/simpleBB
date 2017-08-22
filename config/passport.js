@@ -47,9 +47,9 @@ passport.use("local-signin", new LocalStrategy(
             }
         }).then(function(dbUser) {
             if(!dbUser) {
-                return done(null, false, req.flash("loginMessage", "Incorrect username or password"));
+                return done(null, false, req.flash("loginMessage", "Incorrect username or password."));
             } else if(!dbUser.validPassword(password)) {
-                return done(null, false, req.flash("loginMessage", "Incorrect username or password"));
+                return done(null, false, req.flash("loginMessage", "Incorrect username or password."));
             }
 
             return done(null, dbUser);
