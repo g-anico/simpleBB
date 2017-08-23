@@ -5,7 +5,7 @@ const LoggedUser = function(data) {
     this.usertype = data.userType;
     this.userstatus = data.status;
     this.createdAt = data.createdAt;
-}
+};
 
 module.exports = app => {
 

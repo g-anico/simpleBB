@@ -27,5 +27,5 @@ module.exports = (sequelize, DataTypes) => {
         });
     };
 
-    return Post
+    return Post;
 }
