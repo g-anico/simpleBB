@@ -1,19 +1,29 @@
+<div class="container-fluid">
+    {{#each data}}
+    <div>{{id}} {{category}}
+        <ul>
+        {{#each Forums}}
+        <a href="/viewforum?id={{id}}"><li>{{title}}</a> updated at {{updatedAt}}</li>
+        {{/each}}
+    </ul>
+    </div>
+    {{/each}}
+    <form id="testing" action="/pop" method="post">
+        <input name="yo">
+        <button id="test">CLICK ME</button>
+    </form>
+</div>
 
-
-
-
-
-
-
-<form action="/logout" method="GET">
-    <button type="submit">Logout</button>
-</form>
-<form action="/login" method="GET">
-    <button type="submit">Login</button>
-</form>
-<form action="/signup" method="GET">
-    <button type="submit">Sign up</button>
-</form>
-{{#if user}}
-<div>You are logged in as {{user.name}} a {{user.type}}</div>
-{{/if}}
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$("#test").on("click", evt => {
+    evt.preventDefault();
+    alert("uh")
+    $.ajax({
+        url: "/test",
+        method: "POST"
+    }).done(data => {
+        $("#testing").submit();
+    });
+});
+</script> -->

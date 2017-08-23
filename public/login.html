@@ -20,3 +20,18 @@
         <div>{{message}}
     </div>
 </div>
+
+<button id="test">CLICK ME</button>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    $("#test").on("click", evt => {
+        evt.preventDefault();
+        alert("uh")
+        $.ajax({
+            url: "http://localhost:3000/test",
+            method: "POST"
+        }).done(data => {
+            console.log(data)
+        });
+    });
+</script>

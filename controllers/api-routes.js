@@ -50,7 +50,12 @@ module.exports = app => {
             });
         });
     });
-
+    app.post("/pop", (req, res) => {
+        res.json('newpost')
+    })
+    app.post("/test", (req, res) => {
+        res.send("test");
+    })
 // Edit post
     app.put("", (req, res) => {
         if(!req.user) { res.json("( ͡° ͜ ʖ ͡°)"); }

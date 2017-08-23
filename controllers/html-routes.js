@@ -19,7 +19,8 @@ module.exports = app => {
             include: [db.Forum],
             order: [["id"]]
         }).then(data => {
-            res.json({ data: data, userInfo: userInfo });
+            // res.json({ data: data, userInfo: userInfo });
+            res.render("index", { data: data, userInfo: userInfo });
         });
     });
 
