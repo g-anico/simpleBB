@@ -33,7 +33,7 @@ require("./controllers/auth-routes.js")(app);
 require("./controllers/api-routes.js")(app);
 
 // Start DB, Start Express Server
-db.sequelize.sync({force: true}).then(() => {
+db.sequelize.sync().then(() => {
     app.listen(PORT, () => {
         console.log("We're on at " + PORT);
     });

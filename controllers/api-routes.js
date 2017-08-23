@@ -26,7 +26,7 @@ module.exports = app => {
     });
 
 // Write new post
-    app.post("", (req, res) => {
+    app.post("newpost", (req, res) => {
         if(!req.user) {
             res.json("Nope");
         }
@@ -37,13 +37,28 @@ module.exports = app => {
             UserId: newPost.uid,
             TopicId: newPost.tid
         }).then(data => {
-            res.redirect("/viewtopic?id=" + newPost.tid);
+            db.Topic.update({
+                latestPost: data.id,
+                updateAt: data.createdAt
+            },
+            {
+                where: {
+                    id: newPost.tid
+                }
+            }).then(data => {
+                res.redirect("/viewtopic?id=" + newPost.tid);
+            });
         });
     });
 
 // Edit post
     app.put("", (req, res) => {
-
+        if(!req.user) { res.json("( ͡° ͜ ʖ ͡°)"); }
+        let updatePost = req.body;
+        db.Post.update({
+            post: updatePost.post
+        }).then(data => {
+            res.redirect("/viewtopic?id=" + updatePost.tid);
+        });
     });
-
 }

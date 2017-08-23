@@ -14,13 +14,24 @@ module.exports = app => {
                 if(err) { return (err); }
                 return res.redirect("back");
             });
-        })(req, res, next)
-    })
-    app.post("/signup", passport.authenticate("local-signup", {
-        failureRedirect: "/signup",
-        successRedirect: "/",
-        failureFlash: true
-    }));
+        })(req, res, next);
+    });
+
+    app.post("/signup", (req, res, next) => {
+        passport.authenticate("local-signup", (err, user, info) => {
+            if(err) { return err; }
+            if(!user) { return res.json({ signup: false }); }
+            req.logIn(user, err => {
+                if(err) { return err; }
+                return res.redirect("/");
+            });
+        })(req, res, next);
+    });
+    // app.post("/signup", passport.authenticate("local-signup", {
+    //     failureRedirect: "/signup",
+    //     successRedirect: "/",
+    //     failureFlash: true
+    // }));
 
     app.get("/logout", (req, res) => {
         req.logout();

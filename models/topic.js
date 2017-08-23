@@ -3,8 +3,16 @@ module.exports = (sequelize, DataTypes) => {
         title: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        status: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "active"
+        },
+        latestPost: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
         }
-
     });
 
     Topic.associate = models => {
@@ -19,9 +27,7 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             }
         });
-    };
 
-    Topic.associate = models => {
         Topic.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false

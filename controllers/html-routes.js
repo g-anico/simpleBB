@@ -11,34 +11,59 @@ module.exports = app => {
 
 // Main page - Show all categories and their forums
     app.get("/", (req, res) => {
+        var userInfo;
         if(req.user) {
-            var userInfo = new LoggedUser(req.user);
+            userInfo = new LoggedUser(req.user);
         }
-        res.json(userInfo);
+        db.Category.findAll({
+            include: [db.Forum],
+            order: [["id"]]
+        }).then(data => {
+            res.json({ data: data, userInfo: userInfo });
+        });
     });
 
 // Forum page. Show all topics for this forum
     app.get("/viewforum", (req, res) => {
+        var userInfo;
         if(req.user) {
-            var userInfo = new LoggedUser(req.user);
+            userInfo = new LoggedUser(req.user);
         }
-
         var forumID = req.originalUrl.split("?id=")[1];
+        if(!forumID) { res.redirect("/404"); }
+        db.Topic.findAll({
+            where: {
+                ForumId: forumID
+            },
+            order: [["updatedAt", "DESC"]]
+        }).then(data => {
+            res.json({ data: data, userInfo: userInfo });
+        });
     });
 
 // Topic page. Show all posts(comments) for the topic
     app.get("/viewtopic", (req, res) => {
+        var userInfo;
         if(req.user) {
-            var userInfo = new LoggedUser(req.user);
+            userInfo = new LoggedUser(req.user);
         }
-
         var topicID = req.originalUrl.split("?id=")[1];
+        if(!topicID) { res.redirect("/404"); }
+        db.Post.findAll({
+            where: {
+                TopicId: topicID
+            },
+            order: [["createdAt"]]
+        }).then(data => {
+            res.json({ data: data, userInfo: userInfo });
+        })
     });
 
 // Post replies & new topics
     app.get("/post", (req, res) => {
+        var userInfo;
         if(req.user) {
-            var userInfo = new LoggedUser(req.user);
+            userInfo = new LoggedUser(req.user);
         } else {
             res.redirect("/login");
         }
@@ -52,7 +77,7 @@ module.exports = app => {
             res.render("newPost", { userInfo: userInfo, tid: postPre[1] });
         }
 
-    })
+    });
 
 // User profile page. (WORK ON THIS PART LAST IF WE HAVE TIME)
     app.get("/user/:username", (req, res) => {

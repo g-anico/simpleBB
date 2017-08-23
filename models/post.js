@@ -17,15 +17,14 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             }
         });
-    };
 
-    Post.associate = models => {
         Post.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
         });
     };
+
 
     return Post;
 }

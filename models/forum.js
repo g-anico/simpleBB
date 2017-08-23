@@ -10,9 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Forum.associate = models => {
-        Forum.hasMany(models.Topic, {
-            onDelete: "cascade"
-        });
+        Forum.hasMany(models.Topic, {});
     };
 
     Forum.associate = models => {
