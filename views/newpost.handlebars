@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post a Reply</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="main.css">
+</head>
+
+
+
+<body>
+  <div class="container">
+
+      <div class="navbarmenu">
+        <div class="col-sm-12" "panel-primary" style="background-color: #000000 ; color: #93CCEA;">
+          <h2 class="text-left"><strong>simpleBB</strong></h2>
+          <h5>a modularized bulletin board</h5>
+            <div class="navbar"
+              <ul class="nav navbar-nav navbar-right navbar-right-custom">
+
+                <li><a href="#">home</a></li>
+
+                <li><a href="#">register</a></li>
+                <li><a href="#">login</a></li>
+                <div class="userStats">
+                  <div class="username"><p>{{username if logged in}}</p>
+
+                  </div>
+                  <div class="logoutIfLoggedIn">
+                    <button type="logout-button" name="logout">{{Logout}}</button>
+                    <button type="reply-button" name="reply">{{if logged in, pass in Post button}}</button>
+
+                    <!--note to self: the reply should post under the message body in a new div  -->
+
+                    <!-- or try a modal for replies and new posts?  -->
+
+        <div class="modal fade" id="postNewTopicModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="text-align: center">
+                <div class="modal-header"><h2>Post a New Topic</h2></div>
+                <div class="modal-body"><h3>{{new topic}}</h3></div>
+                <div class="modal-body"><p>{{new post body}}</p></div>
+                <div class="modal-submit"><button type="button" class="btn btn-success" name="submit">Submit</button></div>
+                <div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+
+<!-- <script src="https://use.fontawesome.com/a668149174.js"></script> -->
+
+
+                  </div>
+
+                </div>
+
+              </ul>
+            </div>
+
+        </div>
+      </div>
+    <br>
+  <table class="table table-striped">
+     <thead>
+       <div class="row">
+
+            <tr class="table-header">
+              <th class= "row col-md-4"><p>{{username}}</p></th>
+              <th class= "row col-md-4">{{timestamp}}</th>
+
+           </tr>
+      </div>
+    </thead>
+
+    <tbody id="subtopics">
+
+        <tr class="table-rows">
+          <td><span id="messagebody"><p>{{message body}}</p></span>
+
+        </tr>
+    </tbody>
+  </table>
+
+
+  <!-- Footer Region -->
+  <div class="row">
+    <div class="col-md-12">
+
+      <!-- Line Break followed by closing -->
+      <hr>
+      <h5 class="text-center"><medium>&copy simpleBB. All posts copyright their original authors</medium></h5>
+
+    </div>
+  </div>
+
+
+
+
+  <!-- jQuery JS -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <!-- Code to the JavaScript File -->
+  </body>
+  </html>
