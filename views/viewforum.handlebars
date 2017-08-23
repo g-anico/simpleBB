@@ -1,0 +1,135 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Project 2 Rough Draft</title>
+  <!-- Bootstrap Styling -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+
+<div class="container">
+
+    <div class="navbarmenu">
+      <div class="col-sm-12" "panel-primary" style="background-color: #000000 ; color: #93CCEA;">
+        <h2 class="text-left"><strong>simpleBB</strong></h2>
+        <h5>a modularized bulletin board</h5>
+          <div class="navbar"
+            <ul class="nav navbar-nav navbar-right navbar-right-custom">
+
+              <li><a href="#">home</a></li>
+
+              <li><a href="#">register</a></li>
+              <li><a href="#">login</a></li>
+              <div class="userStats">
+                <div class="username"><p>{{username if logged in}}</p>
+
+                </div>
+                <div class="logoutIfLoggedIn">
+                  <button type="button" class="btn btn-primary btn-md" name="logout" style="float:left;">Logout</button>
+                </div>
+
+                  <!--Code for Modal if user wants to post new topic  -->
+                  <div class="container">
+
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModal" style="float:left;">New Post</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" style="color:black;">New Topic: </h4>
+                            <span class="new-title">
+                              <input type="text" name="new-topic" style="width:400px;font-size:12pt;"></input>
+                            </span>
+                            <br>
+
+                            <div class="modal-body">
+                              <textarea name="new-post" rows="8" cols="75"></textarea>
+                            </div>
+
+                          </div>
+
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-submit="modal">Submit</button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                <!-- End of code for modal for new posts-->
+
+
+
+              </div>
+
+            </ul>
+          </div>
+
+      </div>
+    </div>
+  <br>
+<table class="table table-striped">
+   <thead>
+     <div class="row">
+
+          <tr class="table-header">
+            <th class= "row col-md-4">Topic</th>
+            <th class= "row col-md-4">Posts</th>
+            <th class= "row col-md-4">Last post</th>
+
+         </tr>
+    </div>
+  </thead>
+
+  <tbody id="subtopics">
+
+      <tr class="table-rows">
+        <td><span id="listorder"><a href="viewtopic?id={topicId}}">{{topic.title}}</a></span>
+        <td><span id="subtopic">{{number of posts}}</a></span></td>
+        <td><span id="post-date">{{originalPoster}} {{timestamp}}</span></td>
+
+      </tr>
+  </tbody>
+</table>
+
+
+<!-- Footer Region -->
+<div class="row">
+  <div class="col-md-12">
+
+    <!-- Line Break followed by closing -->
+    <hr>
+    <h5 class="text-center"><medium>&copy simpleBB. All posts copyright their original authors</medium></h5>
+
+  </div>
+</div>
+
+
+
+
+<!-- jQuery JS -->
+<script src="https://code.jquery.com/jquery.js"></script>
+
+<!-- Code to the JavaScript File -->
+</body>
+</html>
