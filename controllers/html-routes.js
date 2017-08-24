@@ -19,7 +19,6 @@ module.exports = app => {
             include: [db.Forum],
             order: [["id"]]
         }).then(data => {
-            // res.json({ data: data, userInfo: userInfo });
             res.render("index", { data: data, userInfo: userInfo });
         });
     });
@@ -58,6 +57,13 @@ module.exports = app => {
         }).then(data => {
             res.json({ data: data, userInfo: userInfo });
         })
+    });
+
+    app.get("/test", (req, res) => {
+        if(req.user) {
+        let userInfo = new LoggedUser(req.user)
+        res.render("index", {userInfo: userInfo});}
+        else {res.render("index")}
     });
 
 // Post replies & new topics

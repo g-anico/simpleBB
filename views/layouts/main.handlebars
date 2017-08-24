@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="public/assets/style/main.css">
 </head>
 <body>
+<!-- NAV -->
 <div class="container-fluid">
     <div class="navbarmenu">
       <div class="col-sm-12" "panel-primary" style="background-color: #000000 ; color: #93CCEA;">
@@ -18,18 +19,23 @@
             <ul class="nav navbar-nav navbar-right navbar-right-custom">
 
               <li><a href="#">home</a></li>
-
-              <li><a href="/signup.handlebars">register</a></li>
-              <li><a href="/login.handlebars">login</a></li>
+              {{#if userInfo}}
+                <li>Logged in as {{userInfo.username}}</li>
+                <li><a href="/logout">Logout</a></li>
+              {{/if}}
+              {{#unless userInfo}}
+                  <li><a id="logOrReg" href="">Register or Log in</a></li>
+              {{/unless}}
             </ul>
           </div>
 
       </div>
     </div>
 </div>
-  <br>
 
-  {{{body}}}
+<!-- BODY GENERATED THROUGH HANDLEBARS -->
+ {{{body}}}
+
 <!-- Footer Region -->
 <div class="row">
   <div class="col-md-12">
@@ -50,16 +56,18 @@
                         <form class="modal-form" id="register-form">
                             <input type="text" name="username" id="username-register" class="form-control input-sm" placeholder="Username" required>
                             <input type="email" name="email" id="email-register" class="form-control input-sm" placeholder="Email address" required>
-                            <input type="password" name="password" id="password-register" class="form-control input-sm" placeholder="Password" required>
-                            <button class="btn btn-primary" type="submit" id="register">Sign up</button>
+                            <input type="password" name="password" id="password-register" class="form-control input-sm" placeholder="Password. Minimum 6 characters.">
+                            <button class="btn btn-primary" type="submit" id="register" value="check">Sign up</button>
+                            <div id="regFail"></div>
                         </form>
                     </div>
                     <div class="vertical-line col-md-1 col-md-offset-1" style="border-left: 2px solid black; height: 50%"></div>
                     <div class="col-md-5" id="login-modal">
-                        <form class="modal-form" id="register-form">
+                        <form class="modal-form" id="login-form" action="/login" method="POST">
                             <input type="text" name="username" id="username-register" class="form-control input-sm" placeholder="Username" required>
                             <input type="password" name="password" id="password-register" class="form-control input-sm" placeholder="Password" required>
                             <button class="btn btn-primary" type="submit" id="login">Log in</button>
+                            <div id="logFail"></div>
                         </form>
                     </div>
                 </div>
@@ -71,15 +79,6 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="public/assets/javascript/marked.min.js"></script>
-<script src="public/assets/javascript/javascript.js"></script>
-<script>
-    if("{{data}}") {
-        console.log("{{data}}")
-    }
-
-    if("{{userInfo}}") {
-        console.log("user")
-    }
-</script>
+<script src="public/assets/javascript/main.js"></script>
 </body>
 </html>

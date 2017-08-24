@@ -1,20 +1,26 @@
-<div class="container-fluid">
+<div class="container" id="categoryList">
     {{#each data}}
-    <div>{{id}} {{category}}
-        <ul>
+        <div class="row categoryTitle">
+            <h3>{{category}}</h3>
+        </div>
         {{#each Forums}}
-        <a href="/viewforum?id={{id}}"><li>{{title}}</a> updated at {{updatedAt}}</li>
+            <div class="row forumRow">
+                <div class="col-md-6 forumTitle">
+                    <a href="/viewforum?id={{id}}"><h4>{{title}}</h4></a>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
         {{/each}}
-    </ul>
-    </div>
     {{/each}}
-    <form id="testing" action="/pop" method="post">
-        <input name="yo">
-        <button id="test">CLICK ME</button>
-    </form>
 </div>
 
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- <form id="testing" action="/pop" method="post">
+    <input name="yo">
+    <button id="test">CLICK ME</button>
+</form> -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
 $("#test").on("click", evt => {
     evt.preventDefault();
@@ -26,4 +32,4 @@ $("#test").on("click", evt => {
         $("#testing").submit();
     });
 });
-</script> -->
+</script>

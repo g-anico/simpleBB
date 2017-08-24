@@ -9,10 +9,10 @@ module.exports = app => {
     app.post("/login", (req, res, next) => {
         passport.authenticate("local-login", (err, user, info) => {
             if(err) { return (err); }
-            if(!user) { return res.json({ login: false }); }
+            if(!user) { return res.json("failed"); }
             req.logIn(user, err => {
                 if(err) { return (err); }
-                return res.redirect("back");
+                return res.json("success");
             });
         })(req, res, next);
     });
@@ -20,10 +20,10 @@ module.exports = app => {
     app.post("/signup", (req, res, next) => {
         passport.authenticate("local-signup", (err, user, info) => {
             if(err) { return err; }
-            if(!user) { return res.json({ signup: false }); }
+            if(!user) { return res.json("failed"); }
             req.logIn(user, err => {
                 if(err) { return err; }
-                return res.redirect("/");
+                return res.json("success");
             });
         })(req, res, next);
     });
