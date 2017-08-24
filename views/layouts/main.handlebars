@@ -1,84 +1,98 @@
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>SimpleBB</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="public/assets/style/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleBB</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="public/assets/css/main.css">
 </head>
+
 <body>
-<!-- NAV -->
-<div class="container-fluid">
-    <div class="navbarmenu">
-      <div class="col-sm-12" "panel-primary" style="background-color: #000000 ; color: #93CCEA;">
-        <h2 class="text-left"><strong>simpleBB</strong></h2>
-        <h5>a modularized bulletin board</h5>
-          <div class="navbar"
-            <ul class="nav navbar-nav navbar-right navbar-right-custom">
+    <!-- NAV -->
+    <div class="container-fluid" id="navbar">
+        <div class="navbarmenu">
+            <div class="col-sm-12" "panel-primary" style="background-color: #000000 ; color: #93CCEA;">
+                <h2 class="text-left"><strong>simpleBB</strong></h2>
+                <h5>a modularized bulletin board</h5>
+                <div class="navbar" <ul class="nav navbar-nav navbar-right navbar-right-custom">
+                    <li><a href="/">home</a></li>
+                    {{#if userInfo}}
+                        <li>Logged in as {{userInfo.username}}</li>
+                        <li><a href="/logout">Logout</a></li>
+                    {{/if}}
+                    {{#unless userInfo}}
+                        <li><a id="logOrReg" href="">Register or Log in</a></li>
+                    {{/unless}}
+                    </ul>
+                </div>
 
-              <li><a href="#">home</a></li>
-              {{#if userInfo}}
-                <li>Logged in as {{userInfo.username}}</li>
-                <li><a href="/logout">Logout</a></li>
-              {{/if}}
-              {{#unless userInfo}}
-                  <li><a id="logOrReg" href="">Register or Log in</a></li>
-              {{/unless}}
-            </ul>
-          </div>
-
-      </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<!-- BODY GENERATED THROUGH HANDLEBARS -->
- {{{body}}}
+    <!-- BODY GENERATED THROUGH HANDLEBARS -->
+    {{{body}}}
 
-<!-- Footer Region -->
-<div class="row">
-  <div class="col-md-12">
-    <!-- Line Break followed by closing -->
-    <hr>
-    <h5 class="text-center"><medium>&copy simpleBB. All posts copyright their original authors</medium></h5>
-  </div>
-</div>
+    <!-- Footer Region -->
+    <div class="row" id="footer">
+        <div class="col-md-12">
+            <!-- Line Break followed by closing -->
+            <hr>
+            <h5 class="text-center"><medium>&copy simpleBB. All posts copyright their original authors</medium></h5>
+        </div>
+    </div>
 
-<!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header" style="text-align: center"><h2>Create an account or Login</h2></div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-5" id="register-modal">
-                        <form class="modal-form" id="register-form">
-                            <input type="text" name="username" id="username-register" class="form-control input-sm" placeholder="Username" required>
-                            <input type="email" name="email" id="email-register" class="form-control input-sm" placeholder="Email address" required>
-                            <input type="password" name="password" id="password-register" class="form-control input-sm" placeholder="Password. Minimum 6 characters.">
-                            <button class="btn btn-primary" type="submit" id="register" value="check">Sign up</button>
-                            <div id="regFail"></div>
-                        </form>
-                    </div>
-                    <div class="vertical-line col-md-1 col-md-offset-1" style="border-left: 2px solid black; height: 50%"></div>
-                    <div class="col-md-5" id="login-modal">
-                        <form class="modal-form" id="login-form" action="/login" method="POST">
-                            <input type="text" name="username" id="username-register" class="form-control input-sm" placeholder="Username" required>
-                            <input type="password" name="password" id="password-register" class="form-control input-sm" placeholder="Password" required>
-                            <button class="btn btn-primary" type="submit" id="login">Log in</button>
-                            <div id="logFail"></div>
-                        </form>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center">
+                    <h2>Create an account or Login</h2></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5" id="register-modal">
+                            <form class="modal-form" id="register-form">
+                                <div class="form-group">
+                                    <input type="text" name="username" id="username-register" class="form-control input-sm" placeholder="Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email-register" class="form-control input-sm" placeholder="Email address" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" id="password-register" class="form-control input-sm" placeholder="Password. Minimum 6 characters.">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit" id="register" value="check">Sign up</button>
+                                </div>
+                                <div class="failMsg" id="regFail"></div>
+                            </form>
+                        </div>
+                        <div class="vertical-line col-md-1 col-md-offset-1" style="border-left: 2px solid black; height: 50%"></div>
+                        <div class="col-md-5" id="login-modal">
+                            <form class="modal-form" id="login-form" action="/login" method="POST">
+                                <div class="form-group">
+                                    <input type="text" name="username" id="username-register" class="form-control input-sm" placeholder="Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" id="password-register" class="form-control input-sm" placeholder="Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit" id="login">Log in</button>
+                                </div>
+                                <div class="failMsg" id="logFail"></div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="public/assets/javascript/marked.min.js"></script>
-<script src="public/assets/javascript/main.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="public/assets/javascript/main.js"></script>
 </body>
+
 </html>

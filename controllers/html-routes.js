@@ -2,6 +2,7 @@ const db = require("../models")
 
 const LoggedUser = function(data) {
     this.username = data.username;
+    this.uid = data.id
     this.usertype = data.userType;
     this.userstatus = data.status;
     this.createdAt = data.createdAt;
@@ -19,7 +20,21 @@ module.exports = app => {
             include: [db.Forum],
             order: [["id"]]
         }).then(data => {
-            res.render("index", { data: data, userInfo: userInfo });
+            if(data.length) {
+                res.render("index", { data: data, userInfo: userInfo });
+            } else {
+                db.User.findAll({
+                    where: {
+                        userType: "admin"
+                    }
+                }).then(admins => {
+                    if(!admins.length) {
+                        res.render("install");
+                    } else {
+                        res.redirect("/admin")
+                    }
+                });
+            }
         });
     });
 
@@ -32,12 +47,17 @@ module.exports = app => {
         var forumID = req.originalUrl.split("?id=")[1];
         if(!forumID) { res.redirect("/404"); }
         db.Topic.findAll({
+            include:[{
+                model: db.Post,
+                include: [db.User]
+            }],
             where: {
                 ForumId: forumID
             },
-            order: [["updatedAt", "DESC"]]
+            order: [[db.Post, "updatedAt", "DESC"]]
         }).then(data => {
-            res.json({ data: data, userInfo: userInfo });
+            res.render("viewforum", { data: data, userInfo: userInfo });
+            // res.json({data: data})
         });
     });
 
@@ -50,20 +70,28 @@ module.exports = app => {
         var topicID = req.originalUrl.split("?id=")[1];
         if(!topicID) { res.redirect("/404"); }
         db.Post.findAll({
+            include: [db.User],
             where: {
                 TopicId: topicID
             },
             order: [["createdAt"]]
         }).then(data => {
-            res.json({ data: data, userInfo: userInfo });
+            res.render("viewtopic", { data: data, userInfo: userInfo });
         })
     });
 
-    app.get("/test", (req, res) => {
+    app.get("/admin", (req, res) => {
         if(req.user) {
-        let userInfo = new LoggedUser(req.user)
-        res.render("index", {userInfo: userInfo});}
-        else {res.render("index")}
+            if(req.user.userType === "admin") {
+                db.Category.findAll({
+                    include: [db.Forum]
+                }).then(data => {
+                    res.render("admin", { data: data, userInfo: userInfo });
+                });
+            } else {
+                res.render("login");
+            }
+        }
     });
 
 // Post replies & new topics
@@ -72,16 +100,20 @@ module.exports = app => {
         if(req.user) {
             userInfo = new LoggedUser(req.user);
         } else {
-            res.redirect("/login");
+            res.send("you need to login");
+            return;
         }
 
         var params = req.originalUrl.split("?")[1];
-        if(params[0] === "f") {     // f = forum, this is when user is posting a new topic. Get forum ID to place under which forum.
+        if(!params) {
+            res.send("404");
+        } else if(params[0] === "f") {     // f = forum, this is when user is posting a new topic. Get forum ID to place under which forum.
             var postPre = params.split("=");
-            res.render("newTopic", { userInfo: userInfo, fid: postPre[1] });
+            res.render("newtopic", { userInfo: userInfo, fid: postPre[1] });
+            // res.json({userInfo: userInfo, fid:postPre[1]})
         } else if(params[0] === "t") {      // t = topic, this is when user is posting a comment to a topic. Get topic ID to place under.
             var postPre = params.split("=");
-            res.render("newPost", { userInfo: userInfo, tid: postPre[1] });
+            res.render("newpost", { userInfo: userInfo, tid: postPre[1] });
         }
 
     });

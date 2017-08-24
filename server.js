@@ -4,7 +4,6 @@ const express = require("express"),
     passport = require("./config/passport"),
     PORT = process.env.PORT || 3000,
     db = require("./models"),
-    flash = require("connect-flash")
     exphbs = require("express-handlebars"),
     app = express();
 
@@ -18,7 +17,6 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(session({ secret: "lolcat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
 // Static Files
 app.use("/public", express.static(__dirname + "/public"));

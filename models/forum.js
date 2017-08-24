@@ -6,14 +6,15 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 len: [3]
             }
+        },
+        description: {
+            type: DataTypes.TEXT("tiny"),
+            allowNull: false,
         }
     });
 
     Forum.associate = models => {
         Forum.hasMany(models.Topic, {});
-    };
-
-    Forum.associate = models => {
         Forum.belongsTo(models.Category, {
             foreignKey: {
                 allowNull: false

@@ -15,21 +15,3 @@
         {{/each}}
     {{/each}}
 </div>
-
-<!-- <form id="testing" action="/pop" method="post">
-    <input name="yo">
-    <button id="test">CLICK ME</button>
-</form> -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script>
-$("#test").on("click", evt => {
-    evt.preventDefault();
-    alert("uh")
-    $.ajax({
-        url: "/test",
-        method: "POST"
-    }).done(data => {
-        $("#testing").submit();
-    });
-});
-</script>

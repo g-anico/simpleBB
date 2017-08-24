@@ -19,9 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         Topic.hasMany(models.Post, {
             onDelete: "cascade"
         });
-    };
 
-    Topic.associate = models => {
         Topic.belongsTo(models.Forum, {
             foreignKey: {
                 allowNull: false

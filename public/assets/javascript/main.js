@@ -5,10 +5,10 @@ $("#logOrReg").on("click", evt => {
 
 $("#login").on("click", evt => {
     evt.preventDefault();
-    let redirectUrl = window.location.href;
+    let url = window.location.href;
     $.post("/login", $("#login-form").serialize(), data =>{
         if(data != "failed") {
-            window.location.href = redirectUrl;
+            window.location.href = url;
         } else {
             $("#logFail").text("Incorrect username and/or password.");
         }
@@ -17,13 +17,13 @@ $("#login").on("click", evt => {
 
 $("#register").on("click", evt => {
     evt.preventDefault();
-    let redirectUrl = window.location.href;
+    let url = window.location.href;
     if($('#password-register').val().length < 6) {
         $("#regFail").text("Password must be at least 6 characters long.");
     } else {
         $.post("/signup", $("#register-form").serialize(), data =>{
             if(data != "failed") {
-                window.location.href = redirectUrl;
+                window.location.href = url;
             } else {
                 $("#regFail").text("Sorry, that username is taken.");
             }
