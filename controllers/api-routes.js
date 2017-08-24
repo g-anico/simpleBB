@@ -17,7 +17,6 @@ function newPost(data, tid, res) {
 module.exports = app => {
 // Create new topic
     app.post("/newtopic", (req, res) => {
-        console.log(req.body)
         if(req.user) {
         // Insert the new topic into the database first.
             let newTopic = req.body;
