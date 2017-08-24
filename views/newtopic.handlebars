@@ -1,15 +1,17 @@
-<form class="post" id="newTopicForm" action="newtopic" method="POST">
-    <div class="form-group">
-        <label for="newTopicSubject">Subject: </label>
-        <input class="form-control input-sm" id="newTopicSubject" name="title" type="text" required>
-    </div>
-    <div class="form-group">
-        <label for="newPost">Message: </label>
-        <textarea class="form-control input-sm" id="newPost" name="post" required></textarea>
-    </div>
-    <input name="ForumId" value="{{fid}}" readonly style="display: none">
-    <input name="UserId" value="{{userInfo.uid}}" readonly style="display: none">
-    <div class="form-group">
-        <button class="btn btn-default">Submit</button>
-    </div>
-</form>
+<div class="container">
+    <form class="post" id="newTopicForm" action="newtopic" method="POST">
+        <div class="form-group">
+            <label for="newTopicSubject">Subject: </label>
+            <input class="form-control input-sm" id="newTopicSubject" name="title" type="text" required>
+        </div>
+        <div class="form-group">
+            <label for="newPost">Message: </label>
+            <textarea class="form-control input-sm" id="newPost" name="post" required></textarea>
+        </div>
+        <input name="ForumId" value="{{fid}}" readonly style="display: none">
+        <input name="UserId" value="{{userInfo.uid}}" readonly style="display: none">
+        <div class="form-group">
+            <button class="btn btn-default">Submit</button>
+        </div>
+    </form>
+</div>

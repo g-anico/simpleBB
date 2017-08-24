@@ -65,4 +65,29 @@ module.exports = app => {
             res.redirect("/viewtopic?id=" + updatePost.tid);
         });
     });
+
+    app.post("/adminfunc", (req, res) => {
+        if(!req.user) {
+            res.json("stahp");
+        } else if(req.user.userType !== "admin") {
+            res.json("STAHP");
+        } else {
+            let form = req.body;
+            if(form.function === "category") {
+                db.Category.create({
+                    category: form.category
+                }).then(data => {
+                    res.redirect("/admin");
+                });
+            } else if(form.function === "forum") {
+                db.Forum.create({
+                    title: form.title,
+                    CategoryId: form.CategoryId,
+                    description: form.description
+                }).then(data => {
+                    res.redirect("/admin");
+                });
+            }
+        }
+    });
 }

@@ -1,5 +1,9 @@
+<a href="/post?fid={{data.id}}">Submit new topic</a>
 <div class="container" id="topicList">
-    {{#each data}}
+    <div class="row">
+        <h3>{{data.title}}</h3>
+    </div>
+    {{#each data.Topics}}
         <div class="row topic-rows">
             <div class="col-md-6 topic-titles">
                 <a href="/viewtopic?id={{id}}"><h4>{{title}}</h4></a>

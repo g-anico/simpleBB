@@ -1,5 +1,6 @@
 <div class="container" id="topicList">
-    {{#each data}}
+    <h3>{{data.title}}</h3>
+    {{#each data.Posts}}
         <div class="row posts">
             <div class="col-md-12">
                 <div class="row">
@@ -19,14 +20,14 @@
         </div>
         <br>
     {{/each}}
+    <a href="/post?tid={{data.id}}">Post Reply</a>
 </div>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="public/assets/javascript/marked.min.js"></script>
 <script>
     $(document).ready(() => {
-        {{#each data}}
+        {{#each data.Posts}}
             var post = `{{{post}}}`
-            console.log((post))
             $("#{{id}}").html(marked(post));
         {{/each}}
     });

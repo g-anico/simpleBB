@@ -9,7 +9,9 @@ const LoggedUser = function(data) {
 };
 
 module.exports = app => {
-
+app.get("/sup", (req, res) => {
+    res.json(req.originalUrl)
+})
 // Main page - Show all categories and their forums
     app.get("/", (req, res) => {
         var userInfo;
@@ -46,19 +48,33 @@ module.exports = app => {
         }
         var forumID = req.originalUrl.split("?id=")[1];
         if(!forumID) { res.redirect("/404"); }
-        db.Topic.findAll({
-            include:[{
-                model: db.Post,
-                include: [db.User]
-            }],
+        db.Forum.findOne({
             where: {
-                ForumId: forumID
+                id: forumID
             },
-            order: [[db.Post, "updatedAt", "DESC"]]
+            include: [{
+                model: db.Topic,
+                include: [{
+                    model: db.Post,
+                    include: db.User
+                }]
+            }]
         }).then(data => {
-            res.render("viewforum", { data: data, userInfo: userInfo });
-            // res.json({data: data})
-        });
+            res.render("viewforum", {data: data, userInfo: userInfo})
+        })
+        // db.Topic.findAll({
+        //     include:[{
+        //         model: db.Post,
+        //         include: [db.User]
+        //     }, db.Forum],
+        //     where: {
+        //         ForumId: forumID
+        //     },
+        //     order: [[db.Post, "updatedAt", "DESC"]]
+        // }).then(data => {
+        //     // res.render("viewforum", { data: data, userInfo: userInfo, fid: forumID });
+        //     res.json({data: data})
+        // });
     });
 
 // Topic page. Show all posts(comments) for the topic
@@ -69,15 +85,27 @@ module.exports = app => {
         }
         var topicID = req.originalUrl.split("?id=")[1];
         if(!topicID) { res.redirect("/404"); }
-        db.Post.findAll({
-            include: [db.User],
+        db.Topic.findOne({
             where: {
-                TopicId: topicID
+                id: topicID
             },
-            order: [["createdAt"]]
+            include: [{
+                model: db.Post,
+                include: [db.User]
+            }]
         }).then(data => {
-            res.render("viewtopic", { data: data, userInfo: userInfo });
-        })
+            res.render("viewtopic", { data: data, userInfo: userInfo })
+        });
+        // db.Post.findAll({
+        //     include: [db.User, db.Topics],
+        //     where: {
+        //         TopicId: topicID
+        //     },
+        //     order: [["createdAt"]]
+        // }).then(data => {
+        //     // res.render("viewtopic", { data: data, userInfo: userInfo });
+        //     res.json(data)
+        // })
     });
 
     app.get("/admin", (req, res) => {

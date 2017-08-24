@@ -1,1 +1,60 @@
-<div>{{{data}}}</div>
+<div class="container">
+    <div class="row" id="admin-category-list">
+        <div class="col-md-12">
+            <h3>Available Categories</h3>
+            <ul>
+                {{#each data}}
+                    <li>{{id}}. {{category}}</li>
+                        <ul>
+                            {{#each Forums}}
+                                <li>{{title}}<br>{{description}}</li>
+                            {{/each}}
+                        </ul>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="row" id="admin-add-cat">
+        <div class="col-md-12">
+            <h3>Add new categories</h3>
+            <form action="/adminfunc" method="POST" id="categoryAdd">
+                <div class="form-group">
+                    <input class="form-control input-sm" type="text" placeholder="Category name" name="category">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <input style="display: none" name="function" value="category" readonly>
+            </form>
+        </div>
+    </div>
+    <div class="row" id="admin-add-forum">
+        <div class="col-md-12">
+            <h3>Add new forums</h3>
+            <form action="/adminfunc" method="POST" id="forumAdd">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input class="form-control input-sm" type="text" placeholder="forum name" name="title">
+                        </div>
+                        <div class="col-md-5">
+                            <select class="form-control input-sm" name="CategoryId" required>
+                                <option disabled selected>Add this forum to which category:</option>
+                                {{#each data}}
+                                <option value={{id}}>{{category}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control input-sm" placeholder="Short description of forum topic" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <input style="display: none" name="function" value="forum" readonly>
+            </form>
+        </div>
+    </div>
+</div>
