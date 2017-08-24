@@ -86,11 +86,13 @@ module.exports = app => {
                 db.Category.findAll({
                     include: [db.Forum]
                 }).then(data => {
-                    res.render("admin", { data: data, userInfo: userInfo });
+                    res.render("admin", { data: data, userInfo: req.user });
                 });
             } else {
                 res.render("login");
             }
+        } else {
+            res.render("login");
         }
     });
 
