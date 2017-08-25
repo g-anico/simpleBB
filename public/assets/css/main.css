@@ -29,6 +29,11 @@ body {
   background-color: #B7C3D0;
 
 }
+
+.wrap {
+    min-height: 100%;
+    margin-bottom: 80px;
+}
 .container-fluid {
   width: 100%;
 }
