@@ -1,5 +1,5 @@
 {
-  "name": "auth",
+  "name": "simplebb",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -11,9 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
-    "connect-flash": "^0.1.1",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.5",
