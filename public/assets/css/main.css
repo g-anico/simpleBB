@@ -77,3 +77,29 @@ body {
 .my-border {
   border: solid darkgray 3px;
 }
+
+.container {
+  margin-top: 40px;
+  padding-bottom: 15px;
+}
+.categoryTitle {
+  padding-left: 20px;
+}
+.forumTitle {
+  padding-left: 40px;
+}
+
+.forumTopics {
+  padding-left: 20px;
+}
+
+.userviewtopic,
+.topic-titles {
+  padding-left: 25px;
+}
+
+.viewTopic {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
