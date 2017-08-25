@@ -1,10 +1,18 @@
-
-
-
 <div class="container body-container my-border" id="topicList">
   <a href="/post?fid={{data.id}}" id="submitTopic"><button class="newTopicButton btn btn-primary">Submit new topic</button></a>
     <div class="row forumTopics">
         <h3>{{data.title}}</h3>
+    </div>
+    <div class="row titlebar">
+        <div class="col-md-6 topic-titles">
+            <h4>Topic</h4>
+        </div>
+        <div class="col-md-2">
+            <p>Posts</p>
+        </div>
+        <div class="col-md-4">
+            <p>Last Post</p>
+        </div>
     </div>
     {{#each data.Topics}}
         <div class="row topic-rows">
