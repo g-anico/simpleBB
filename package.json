@@ -1,11 +1,13 @@
 {
   "name": "simplebb",
   "version": "1.0.1",
-  "description": "",
+  "description": "A self hosted bulletin board",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
+  },
+  "bin": {
+      "simplebb": "server.js"
   },
   "keywords": [],
   "author": "",
