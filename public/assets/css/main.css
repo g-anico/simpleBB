@@ -1,1 +1,79 @@
+*{
+  font-family: sans-serif !important;
+}
 
+div{
+  display: block;
+}
+.newTopicButton {
+  position: relative;
+  float: right;
+  top: 10px;
+  right: 15px;
+
+}
+.container {
+
+  background-color: aliceblue;
+
+}
+
+
+body {
+  background-color: #B7C3D0;
+
+}
+.container-fluid {
+  width: 100%;
+}
+
+#submitTopic:hover {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+#logOrReg {
+  color: #93CCEA;
+  display: inline-block;
+  float: right;
+
+}
+
+.navbar {
+  display: inline-block;
+  float: right;
+  color: #93CCEA;
+  margin-bottom: 0;
+}
+
+.navlinks {
+  display: inline-block;
+  float: right;
+  padding: 10px;
+  padding-bottom: 0;
+}
+.navlink {
+  color: #93CCEA;
+  display: inline-block;
+  float: right;
+}
+
+/*.row {
+  width: 100px;
+  border: solid darkgray 3px;
+}*/
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+
+.w-100 {
+  width: 100%;
+}
+
+.my-border {
+  border: solid darkgray 3px;
+}
