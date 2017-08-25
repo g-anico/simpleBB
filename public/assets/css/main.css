@@ -36,7 +36,7 @@ body {
 
 .wrap {
     min-height: 100%;
-    padding: 80px;
+    padding-bottom: 80px;
 }
 .container-fluid {
   width: 100%;
