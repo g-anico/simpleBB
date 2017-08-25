@@ -1,13 +1,13 @@
 {
   "name": "simplebb",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A self hosted bulletin board",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "bin": {
-      "simplebb": "server.js"
+    "simplebb": "server.js"
   },
   "keywords": [],
   "author": "",
