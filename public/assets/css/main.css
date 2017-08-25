@@ -116,6 +116,7 @@ body {
   height: 80px;
   line-height: 80px;
   background-color: black;
+  padding-top: 80px;
   color: #93CCEA;
 }
 .text-center{
