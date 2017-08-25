@@ -12,6 +12,13 @@ div{
   right: 15px;
 
 }
+.logoA {
+    color: inherit;
+}
+.logoA:hover {
+    text-decoration: none;
+    color: inherit;
+}
 .container {
 
   background-color: aliceblue;

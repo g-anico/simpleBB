@@ -62,19 +62,7 @@ app.get("/sup", (req, res) => {
         }).then(data => {
             res.render("viewforum", {data: data, userInfo: userInfo})
         })
-        // db.Topic.findAll({
-        //     include:[{
-        //         model: db.Post,
-        //         include: [db.User]
-        //     }, db.Forum],
-        //     where: {
-        //         ForumId: forumID
-        //     },
-        //     order: [[db.Post, "updatedAt", "DESC"]]
-        // }).then(data => {
-        //     // res.render("viewforum", { data: data, userInfo: userInfo, fid: forumID });
-        //     res.json({data: data})
-        // });
+
     });
 
 // Topic page. Show all posts(comments) for the topic
@@ -96,16 +84,6 @@ app.get("/sup", (req, res) => {
         }).then(data => {
             res.render("viewtopic", { data: data, userInfo: userInfo })
         });
-        // db.Post.findAll({
-        //     include: [db.User, db.Topics],
-        //     where: {
-        //         TopicId: topicID
-        //     },
-        //     order: [["createdAt"]]
-        // }).then(data => {
-        //     // res.render("viewtopic", { data: data, userInfo: userInfo });
-        //     res.json(data)
-        // })
     });
 
     app.get("/admin", (req, res) => {
@@ -130,7 +108,7 @@ app.get("/sup", (req, res) => {
         if(req.user) {
             userInfo = new LoggedUser(req.user);
         } else {
-            res.send("you need to login");
+            res.render("login");
             return;
         }
 
