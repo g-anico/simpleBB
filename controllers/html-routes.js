@@ -58,7 +58,8 @@ app.get("/sup", (req, res) => {
                     model: db.Post,
                     include: db.User
                 }]
-            }]
+            }],
+            order: [[db.Topic, "updatedAt", "DESC"]]
         }).then(data => {
             res.render("viewforum", {data: data, userInfo: userInfo})
         })
