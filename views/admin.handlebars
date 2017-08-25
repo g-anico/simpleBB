@@ -1,17 +1,19 @@
-<div class="container">
+<div class="container body-container my-border">
     <div class="row" id="admin-category-list">
         <div class="col-md-12">
-            <h3>Available Categories</h3>
-            <ul>
-                {{#each data}}
-                    <li>{{id}}. {{category}}</li>
-                        <ul>
-                            {{#each Forums}}
-                                <li>{{title}}<br>{{description}}</li>
-                            {{/each}}
-                        </ul>
-                {{/each}}
-            </ul>
+            <div class="w-100">
+              <h3>Available Categories</h3>
+              <ul>
+                  {{#each data}}
+                      <li>{{id}}. {{category}}</li>
+                          <ul>
+                              {{#each Forums}}
+                                  <li>{{title}}<br>{{description}}</li>
+                              {{/each}}
+                          </ul>
+                  {{/each}}
+              </ul>
+            </div>
         </div>
     </div>
     <div class="row" id="admin-add-cat">

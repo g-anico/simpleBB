@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SimpleBB</title>
+    <title>simpleBB</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="public/assets/css/main.css">
@@ -11,21 +11,27 @@
 
 <body>
     <!-- NAV -->
-    <div class="container-fluid" id="navbar">
+    <div class="navbarDiv clearfix " id="navbar">
         <div class="navbarmenu">
             <div class="col-sm-12" "panel-primary" style="background-color: #000000 ; color: #93CCEA;">
-                <h2 class="text-left"><strong>simpleBB</strong></h2>
-                <h5>a modularized bulletin board</h5>
-                <div class="navbar" <ul class="nav navbar-nav navbar-right navbar-right-custom">
-                    <li><a href="/">home</a></li>
-                    {{#if userInfo}}
-                        <li>Logged in as {{userInfo.username}}</li>
-                        <li><a href="/logout">Logout</a></li>
-                    {{/if}}
-                    {{#unless userInfo}}
-                        <li><a id="logOrReg" href="">Register or Log in</a></li>
-                    {{/unless}}
-                    </ul>
+
+                <div class="flex">
+                  <div>
+                    <h2 class="text-left"><strong>simpleBB</strong></h2>
+                    <h5>a modularized bulletin board</h5>
+                  </div>
+                  <div class="navbar"
+                    <ul class="nav navbar-nav navbar-right navbar-right-custom">
+                      <li class="navlinks"><a href="/" class="navlink">home</a></li>
+                      {{#if userInfo}}
+                          <li class="navlinks">logged in as {{userInfo.username}}</li>
+                          <li class="navlinks"><a href="/logout" class="navlink">logout</a></li>
+                      {{/if}}
+                      {{#unless userInfo}}
+                          <li class="navlinks"><a id="logOrReg" href="">register or log in</a></li>
+                      {{/unless}}
+                      </ul>
+                  </div>
                 </div>
 
             </div>
@@ -33,7 +39,10 @@
     </div>
 
     <!-- BODY GENERATED THROUGH HANDLEBARS -->
-    {{{body}}}
+
+      {{{body}}}
+
+
 
     <!-- Footer Region -->
     <div class="row" id="footer">
@@ -49,7 +58,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="text-align: center">
-                    <h2>Create an account or Login</h2></div>
+                    <h2>create an account or login</h2></div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-5" id="register-modal">
@@ -64,7 +73,7 @@
                                     <input type="password" name="password" id="password-register" class="form-control input-sm" placeholder="Password. Minimum 6 characters.">
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit" id="register" value="check">Sign up</button>
+                                    <button class="btn btn-primary" type="submit" id="register" value="check">sign up</button>
                                 </div>
                                 <div class="failMsg" id="regFail"></div>
                             </form>
@@ -79,7 +88,7 @@
                                     <input type="password" name="password" id="password-register" class="form-control input-sm" placeholder="Password" required>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit" id="login">Log in</button>
+                                    <button class="btn btn-primary" type="submit" id="login">log in</button>
                                 </div>
                                 <div class="failMsg" id="logFail"></div>
                             </form>

@@ -1,6 +1,9 @@
-<a href="/post?fid={{data.id}}">Submit new topic</a>
-<div class="container" id="topicList">
-    <div class="row">
+
+
+
+<div class="container body-container my-border" id="topicList">
+  <button class="newTopicButton"><a href="/post?fid={{data.id}}" id="submitTopic">Submit new topic</a></button>
+    <div class="row forumTopics">
         <h3>{{data.title}}</h3>
     </div>
     {{#each data.Topics}}
@@ -12,8 +15,7 @@
                 <p>{{Posts.length}}</p>
             </div>
             <div class="col-md-4 last-post">
-                <p>{{Posts.0.updatedAt}}</p>
-                <p>{{Posts.0.User.username}}
+                <p>{{Posts.0.updatedAt}}<br>By {{Posts.0.User.username}}</p>
             </div>
         </div>
     {{/each}}
