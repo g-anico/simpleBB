@@ -20,6 +20,7 @@ div{
   line-height: 80px;
   margin-top: -80px;
   background-color: black;
+  border: 2px solid black;
   color: #93CCEA;
 }
 .newTopicButton {
