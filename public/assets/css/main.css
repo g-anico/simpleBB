@@ -5,6 +5,23 @@
 div{
   display: block;
 }
+.superWrap{
+    height: 100%
+}
+.wrap {
+    min-height: 100%;
+    padding-bottom: 80px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  margin-top: -80px;
+  background-color: black;
+  color: #93CCEA;
+}
 .newTopicButton {
   position: relative;
   float: right;
@@ -114,21 +131,7 @@ body {
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
-.wrap {
-    min-height: 100%;
-    padding-bottom: 80px;
-    position: absolute;
-}
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-  line-height: 80px;
-  margin-top: -80px;
-  background-color: black;
-  color: #93CCEA;
-}
+
 .text-center{
   margin-top: 38px;
 }
