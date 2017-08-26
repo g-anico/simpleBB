@@ -81,7 +81,8 @@ app.get("/sup", (req, res) => {
             include: [{
                 model: db.Post,
                 include: [db.User]
-            }]
+            }],
+            order: [[db.Post, "createdAT"]]
         }).then(data => {
             res.render("viewtopic", { data: data, userInfo: userInfo })
         });
