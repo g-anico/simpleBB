@@ -15,6 +15,7 @@ passport.deserializeUser(function(obj, cb){
 passport.use("admin-signup", new LocalStrategy(
     {usernameField: "username", passwordField: "password", passReqToCallback: true},
     function(req, username, password, done) {
+        username = username.toLowerCase();
         db.User.findOne({
             where: {
                 username:username
@@ -42,6 +43,7 @@ passport.use("admin-signup", new LocalStrategy(
 passport.use("local-signup", new LocalStrategy(
     {usernameField: "username", passwordField: "password", passReqToCallback: true},
     function(req, username, password, done) {
+        username = username.toLowerCase();
         db.User.findOne({
             where: {
                 username:username
@@ -68,6 +70,7 @@ passport.use("local-signup", new LocalStrategy(
 passport.use("local-login", new LocalStrategy(
     {passReqToCallback: true},
     function(req, username, password, done) {
+        username = username.toLowerCase();
         db.User.findOne({
             where: {
                 username: username
