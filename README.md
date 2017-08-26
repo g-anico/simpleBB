@@ -2,7 +2,6 @@
 
 
 > A simple, light, old-school message board written in node.js, following the KISS(Keep It Simple, Stupid) philosophy.
->
 > This application was created for a group project at the UCLA Extension Coding Bootcamp.
 
 ## Table of Contents
